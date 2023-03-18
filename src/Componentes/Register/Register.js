@@ -1,10 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import {  Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext/AuthProvider';
 
 const Register = () => {
+    const {EamilAndPasswordReg}= useContext(AuthContext);
+    const createUserCliker =(e)=>{
+        e.preventDefault();
+        const form = e.target;
+        const email =form.email.value;
+        const password = form.password.value;
+        const name =form.userName.value;
+        const photo = form.photoUrl.value;
+        console.log(email,password,name,photo);
+        EamilAndPasswordReg(email,password)
+        .then(result=>{
+            const user =result.user;
+            form.reset()
+            console.log(user)
+        })
+        .catch(error=>{console.error(error)})
+    }
     return (
-        <div class="box">
-            <div className="hero min-h-screen bg-base-200">
+        <div>
+            <form onSubmit={createUserCliker} className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col ">
                     <div className="text-center lg:text-left mb-10">
                         <h1 className="text-5xl font-bold">Please,Register now!</h1>
@@ -31,16 +49,16 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" />
+                                <input name='email' type="email" placeholder="email" className="input input-bordered" />
                             </div>
 
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" placeholder="password" className="input input-bordered" />
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
@@ -49,7 +67,7 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };

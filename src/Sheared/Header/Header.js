@@ -5,7 +5,7 @@ import { AcademicCapIcon } from '@heroicons/react/24/solid'
 const Header = () => {
     const user = {name:'akram',uid:''}
     return (
-        <div class="header-item">
+        <div>
             <div className="navbar text-zinc-100 bg-cyan-800">
                 <div className="flex-1 ">
                     <AcademicCapIcon className='w-10 h-9'></AcademicCapIcon><Link className='btn btn-ghost normal-case' to='/'> <span className='text-3xl'>EduFunIT</span></Link>
@@ -33,13 +33,13 @@ const Header = () => {
                                 </label>
                                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                     <li>
-                                        <a className="justify-between">
+                                        <Link className="justify-between">
                                             Profile
                                             <span className="badge">New</span>
-                                        </a>
+                                        </Link>
                                     </li>
-                                    <li><a>Settings</a></li>
-                                    <li><a>Logout</a></li>
+                                    <li><Link>Settings</Link></li>
+                                    <li><Link>Logout</Link></li>
                                 </ul>
                             </div>
                         </div>
