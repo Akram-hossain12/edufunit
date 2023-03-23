@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut, sendEmailVerification} from 'firebase/auth'
 import app from '../../Firebse/firebse.init';
 
 
@@ -11,15 +11,55 @@ const auth = getAuth(app)
 
 const AuthProvider = ({children}) => {
     const [user,setUser]=useState(null);
+    const [loader,setLoader]=useState(true)
 
     const EamilAndPasswordReg =(email,password)=>{
+        setLoader(true)
          return createUserWithEmailAndPassword(auth,email,password)
     }
     const signInEmailPass = (email,password)=>{
-       
+       setLoader(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
-    const authInfo = {user,EamilAndPasswordReg,signInEmailPass}
+    const providerLogin=(provider)=>{
+        setLoader(true)
+        return signInWithPopup(auth,provider)
+    }
+    const providerGithub = (provider)=>{
+        setLoader(true)
+        return signInWithPopup(auth,provider)
+    }
+    const userVrifying =()=>{
+        return sendEmailVerification(auth.currentUser)
+    }
+    const logOut =()=>{
+       setLoader(true)
+        return signOut(auth)
+    }
+    useEffect(()=>{
+        const unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
+            console.log(currentUser);
+            
+            if(currentUser===null||currentUser.emailVerified){
+                setUser(currentUser);
+            }
+          setLoader(false)
+        })
+        return ()=> unsubscribe();
+    },[])
+
+    const authInfo = {
+        user,
+        loader,
+        userVrifying,
+        EamilAndPasswordReg,
+        signInEmailPass,
+        providerLogin,
+        providerGithub,
+        logOut,
+    }
+
+
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

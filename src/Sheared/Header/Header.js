@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AcademicCapIcon } from '@heroicons/react/24/solid'
+import { AuthContext } from '../../Context/AuthContext/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
-    const user = {name:'akram',uid:''}
+    const { user,logOut } = useContext(AuthContext);
+    const logOutCliker =()=>{
+        logOut()
+        .then(()=>{})
+        .catch((error=>{console.error(error)}))
+    }
+    console.log(user)
     return (
         <div>
             <div className="navbar text-zinc-100 bg-cyan-800">
@@ -28,18 +36,21 @@ const Header = () => {
                             <div className="dropdown dropdown-end mx-5">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
-                                        {/* <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
+                                        {
+                                            user?.photoURL ? <img style={{ height: '40px' }} src={user?.photoURL} alt=""></img> :
+                                            <FaUser></FaUser>
+                                        }
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                     <li>
                                         <Link className="justify-between">
                                             Profile
-                                            <span className="badge">New</span>
+                                            <span className="badge">{user.displayName}</span>
                                         </Link>
                                     </li>
                                     <li><Link>Settings</Link></li>
-                                    <li><Link>Logout</Link></li>
+                                    <li><Link onClick={logOutCliker}>Logout</Link></li>
                                 </ul>
                             </div>
                         </div>
