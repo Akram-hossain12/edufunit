@@ -25,7 +25,7 @@ const Header = () => {
 
                     <li className=' p-3 rounded-md hover:bg-cyan-700 hover:border-r-2  transition duration-150 ease-out hover:ease-in'><Link to='/courses'>Course</Link></li>
 
-                    <li className=' mx-3 p-3 rounded-md hover:bg-cyan-700 hover:border-r-2  transition duration-150 ease-out hover:ease-in'><Link to='/about'>About</Link></li>
+                    <li className=' mx-3 p-3 rounded-md hover:bg-cyan-700 hover:border-r-2  transition duration-150 ease-out hover:ease-in'><Link to='/contact'>Contact</Link></li>
 
                     <li className=' p-3 rounded-md hover:bg-cyan-700 hover:border-r-2  transition duration-150 ease-out hover:ease-in'><Link to='/blog'>Blog</Link></li>
 

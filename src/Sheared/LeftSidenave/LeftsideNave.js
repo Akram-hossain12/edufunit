@@ -10,12 +10,12 @@ const LeftsideNave = () => {
             .then(data => setCatagoris(data))
     }, [])
     return (
-        <div className='mt-5 ml-12 mb-10'>
-            <h3 className='text-4xl mb-10 text-amber-800'>Explore
-              <br></br>  Our Popular Courses</h3>
+        <div className='mt-10 ml-12 mb-10'>
+            <h3 className='text-5xl mb-10 text-cyan-800 font-bold'>Explore
+              <br></br>  Our  Courses</h3>
             <div>
                 {
-                   course.map(course => <p key={course.id}><Link className='btn btn-outline btn-secondary mb-3' to={`/course/${course._id}`}>{course.name}</Link></p>)
+                   course.map(course => <p key={course._id}><Link className='btn btn-outline btn-secondary mb-3' to={`/course/${course._id}`}>{course.name}</Link></p>)
                 }
             </div>
         </div>
