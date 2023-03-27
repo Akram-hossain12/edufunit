@@ -12,8 +12,8 @@ const Main = () => {
             <Header></Header>
             <Banner className=''></Banner> 
             <div className='grid grid-cols-3'>
-                   <LeftsideNave className='col-start-1 col-end-3'></LeftsideNave>
-                  <Outlet className='col-start-1 col-end-8'></Outlet>  
+                   <LeftsideNave className=''></LeftsideNave>
+                  <Outlet className='col-span-2'></Outlet>  
             </div>
 
             <Footer></Footer>

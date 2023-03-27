@@ -72,6 +72,9 @@ const Login = () => {
             setError(error.message);
         
         })
+        .finally(()=>{
+            setLoader(false)
+        })
     }
     return (
 

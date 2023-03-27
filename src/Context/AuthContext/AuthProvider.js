@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut, sendEmailVerification} from 'firebase/auth'
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut, sendEmailVerification, updateProfile} from 'firebase/auth'
 import app from '../../Firebse/firebse.init';
 
 
@@ -29,6 +29,9 @@ const AuthProvider = ({children}) => {
         setLoader(true)
         return signInWithPopup(auth,provider)
     }
+    const updeteUserProfile=(profile)=>{
+             return updateProfile(auth.currentUser,profile)
+    }
     const userVrifying =()=>{
         return sendEmailVerification(auth.currentUser)
     }
@@ -51,12 +54,14 @@ const AuthProvider = ({children}) => {
     const authInfo = {
         user,
         loader,
+        setLoader,
         userVrifying,
         EamilAndPasswordReg,
         signInEmailPass,
         providerLogin,
         providerGithub,
         logOut,
+        updeteUserProfile,
     }
 
 

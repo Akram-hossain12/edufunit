@@ -3,8 +3,7 @@ import {  Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthContext/AuthProvider';
 
 const Register = () => {
-    const {EamilAndPasswordReg,userVrifying}= useContext(AuthContext);
-    const [accept,setAccept]=useState('')
+    const {EamilAndPasswordReg,userVrifying,updeteUserProfile}= useContext(AuthContext);
     const [error,setError]=useState('')
     const createUserCliker =(e)=>{
         e.preventDefault();
@@ -18,6 +17,7 @@ const Register = () => {
         .then(result=>{
             const user =result.user;
             form.reset();
+            clikerUpdeteProfile(name,photo);
             clikerOfVarifing();
             console.log(user)
         })
@@ -30,9 +30,14 @@ const Register = () => {
         userVrifying()
        .then(()=>{})
    }
-   const acceptedCliker = event=>{
-       setAccept(event.target.checked)
-   }
+   const clikerUpdeteProfile =(name,photo)=>{
+    const profile ={displayName:name, photoURL:photo};
+     updeteUserProfile(profile)
+    .then(()=>{})
+    .catch(error=>{console.error(error)})
+
+}
+   
     return (
         <div>
             <form onSubmit={createUserCliker} className="hero min-h-screen bg-base-200">
@@ -74,7 +79,7 @@ const Register = () => {
                                     <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
                                 </label>
                             </div>
-                            <p>{error}</p>
+                            <p className='text-rose-700'>{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn bg-cyan-800">Register</button>
                             </div>
