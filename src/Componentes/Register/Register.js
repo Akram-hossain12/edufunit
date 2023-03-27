@@ -39,7 +39,7 @@ const Register = () => {
 }
    
     return (
-        <div>
+        <div className='mt-10'>
             <form onSubmit={createUserCliker} className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col ">
                     <div className="text-center lg:text-left mb-10">

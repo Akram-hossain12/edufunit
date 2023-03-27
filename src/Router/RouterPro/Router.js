@@ -4,6 +4,7 @@ import Blog from "../../Componentes/Blog/Blog";
 import Contact from "../../Componentes/Contect/Contact";
 import Course from "../../Componentes/Course/Course";
 import Courses from "../../Componentes/Courses/Courses";
+import DeatilsCourses from "../../Componentes/DeatilsCourses/DeatilsCourses";
 import Home from "../../Componentes/Home/Home";
 import Login from "../../Componentes/LogIn/Login";
 import Register from "../../Componentes/Register/Register";
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
             },
 
             {
-                path:'/course/:_id',
+                path:'/courses/:_id',
                 element:<Course></Course>,
                 loader:({params})=>fetch(`http://localhost:5000/courses/${params._id}`)
             },

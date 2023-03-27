@@ -15,7 +15,7 @@ const LeftsideNave = () => {
               <br></br>  Our  Courses</h3>
             <div>
                 {
-                   course.map(course => <p key={course._id}><Link className='btn btn-outline btn-secondary mb-3' to={`/course/${course._id}`}>{course.name}</Link></p>)
+                   course.map(course => <p key={course._id}><Link className='btn btn-outline btn-secondary mb-3' to={`/courses/${course._id}`}>{course.name}</Link></p>)
                 }
             </div>
         </div>

@@ -4,7 +4,6 @@ import CousesSummaryCard from '../../Sheared/CoursesSummaryCard/CousesSummaryCar
 
 const Course = () => {
     const allCatagoryCourses = useLoaderData();
-    console.log(allCatagoryCourses)
     return (
         <div className='w-[800px] grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1'>
             {allCatagoryCourses.map(courses => <CousesSummaryCard 
