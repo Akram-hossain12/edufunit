@@ -5,7 +5,7 @@ const LeftsideNave = () => {
     const [course, setCatagoris] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/data')
+        fetch('https://edufunit-server.vercel.app/data')
             .then(res => res.json())
             .then(data => setCatagoris(data))
     }, [])

@@ -4,7 +4,7 @@ import Blog from "../../Componentes/Blog/Blog";
 import Contact from "../../Componentes/Contect/Contact";
 import Course from "../../Componentes/Course/Course";
 import Courses from "../../Componentes/Courses/Courses";
-import DeatilsCourses from "../../Componentes/DeatilsCourses/DeatilsCourses";
+
 import Home from "../../Componentes/Home/Home";
 import Login from "../../Componentes/LogIn/Login";
 import Register from "../../Componentes/Register/Register";
@@ -19,19 +19,19 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5000/courses")
+                loader: () => fetch("https://edufunit-server.vercel.app/courses")
             },
             {
 
                 path:'/courses',
                 element:<Courses></Courses>,
-                loader: () => fetch("http://localhost:5000/courses")
+                loader: () => fetch("https://edufunit-server.vercel.app/courses")
             },
 
             {
                 path:'/courses/:_id',
                 element:<Course></Course>,
-                loader:({params})=>fetch(`http://localhost:5000/courses/${params._id}`)
+                loader:({params})=>fetch(`https://edufunit-server.vercel.app/courses/${params._id}`)
             },
             {
                 path: '/about',
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>,
-                loader:()=>fetch('http://localhost:5000/blog')
+                loader:()=>fetch('https://edufunit-server.vercel.app/blog')
             }
         ]
     }
